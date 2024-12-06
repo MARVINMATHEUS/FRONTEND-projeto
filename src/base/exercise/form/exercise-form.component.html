@@ -1,0 +1,66 @@
+<mat-card>
+  <mat-card-title class="title">Criar Exercício</mat-card-title>
+
+  <mat-card-content>
+    <form [formGroup]="formGroup">
+      <div class="input-box">
+        <mat-form-field>
+          <mat-label>Grupo Muscular</mat-label>
+          <mat-select class="form-select "  formControlName="muscle_group" required>
+            @for (option of groupMusculares; track option) {
+              <mat-option  [value]="option.id">
+                {{ option.name }}
+              </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="input-box">
+        <mat-form-field>
+          <mat-label>Exercicio</mat-label>
+          <mat-select class="form-select "  formControlName="exercise" required>
+            @for (option of exercicios; track option) {
+              <mat-option  [value]="option.id">
+                {{ option.name }}
+              </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="input-box">
+        <mat-form-field>
+          <mat-label>Repetições</mat-label>
+          <input matInput type="number" formControlName="repetitions" autofocus required>
+          <mat-error>Campo Inválido</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="input-box">
+        <mat-form-field>
+          <mat-label>series</mat-label>
+          <input matInput type="number" formControlName="series" autofocus required>
+          <mat-error>Campo Inválido</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="input-box">
+        <mat-form-field>
+          <mat-label>Tempo de descanso</mat-label>
+          <input matInput type="number" formControlName="rest_time" autofocus required>
+          <mat-error>Campo Inválido</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="btn-box">
+        <button mat-flat-button class="btn-default" id="save" type="submit"
+                (click)="saveOrUpdate()"
+                [disabled]="!formGroup.valid">
+          Salvar Treino
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+

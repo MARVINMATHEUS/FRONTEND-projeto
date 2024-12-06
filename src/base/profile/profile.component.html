@@ -1,0 +1,59 @@
+
+<mat-card>
+  <mat-card-title class="title">Perfil do usuário</mat-card-title>
+
+  <mat-card-content>
+    <form  class="flex flex-column gap-1" (ngSubmit)="onSubmit()">
+
+      <div class="input-box">
+        <mat-form-field>
+          <mat-label>Nome do usuário:</mat-label>
+          <input matInput type="text" [(ngModel)]="userProfile.login.username" name="username" placeholder="Nome do usuário" required readonly />
+        </mat-form-field>
+      </div>
+
+      <div class="input-box">
+        <mat-form-field>
+          <mat-label>Nome</mat-label>
+          <input matInput type="text" [(ngModel)]="userProfile.login.first_name" name="first_name" placeholder="Nome" required />
+        </mat-form-field>
+      </div>
+
+      <div class="input-box">
+        <mat-form-field>
+          <mat-label>Sobrenome</mat-label>
+          <input matInput type="text" [(ngModel)]="userProfile.login.last_name" name="last_name" placeholder="Sobrenome" required />
+        </mat-form-field>
+      </div>
+
+      <div class="input-box">
+        <mat-form-field>
+          <mat-label>Idade</mat-label>
+          <input matInput type="text" [(ngModel)]="userProfile.age" name="age" placeholder="Idade"
+                 required />
+        </mat-form-field>
+      </div>
+
+      <div class="input-box">
+        <mat-form-field>
+          <mat-label>Peso</mat-label>
+          <input matInput type="text" [(ngModel)]="userProfile.weight" name="weight" placeholder="Peso"
+                 required />
+        </mat-form-field>
+      </div>
+
+      <div class="input-box">
+        <mat-form-field>
+          <mat-label>Altura</mat-label>
+          <input matInput type="text" [(ngModel)]="userProfile.height" name="height" placeholder="Altura"
+                 required />
+        </mat-form-field>
+      </div>
+
+      <div class="btn-box">
+        <button type="submit" class="btn-default"  mat-stroked-button>Salvar</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+

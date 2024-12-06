@@ -1,0 +1,34 @@
+<mat-toolbar>
+  <mat-toolbar-row color="tertiary">
+    <span>DailyFit</span>
+    <div class="d-flex">
+
+      @for (menu of menuList; track menu.route) {
+        <a mat-button class="ml-3 mr-3" [routerLink]="menu.route" [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="menu-btn-active">
+          {{ menu.title }}
+        </a>
+      }
+    </div>
+
+
+    <span class="navbar-spacer"></span>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item routerLink="/userprofile">Perfil</a>
+      <button mat-menu-item (click)="logout()">Sair</button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>person</mat-icon>
+      <span>
+        {{profile.login.username}}
+      </span>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="flex flex-column w-full h-full">
+  <div class="m-6">
+    <router-outlet></router-outlet>
+  </div>
+</div>

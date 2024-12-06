@@ -1,0 +1,75 @@
+<div class="flex flex-column gap-1">
+
+  <div class="flex gap-3">
+    <mat-form-field> <!-- Formulario -->
+      <mat-label>Pesquisar nome</mat-label>
+      <input matInput [(ngModel)]="searchName">
+    </mat-form-field>
+
+    <button mat-fab (click)="search()" class="btn-default">
+      <mat-icon>search</mat-icon>
+    </button>
+
+    <button mat-fab (click)="goToPage('userprofile/create')" class="btn-default">
+      <mat-icon>add</mat-icon>
+    </button>
+
+
+
+  </div>
+  <mat-card>
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Cod.</th>
+        <td mat-cell *matCellDef="let element"> {{ element.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="login">
+        <th mat-header-cell *matHeaderCellDef> login</th>
+        <td mat-cell *matCellDef="let element"> {{ element.login }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name</th>
+        <td mat-cell *matCellDef="let element"> {{ element.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef> Age</th>
+        <td mat-cell *matCellDef="let element"> {{ element.age }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef> Weight</th>
+        <td mat-cell *matCellDef="let element"> {{ element.weight }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="height">
+        <th mat-header-cell *matHeaderCellDef> Height</th>
+        <td mat-cell *matCellDef="let element"> {{ element.height }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button aria-label="edit" (click)="goToPage('userprofile/'+element.id)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button aria-label="delete" (click)="deleteObject(element.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+  </mat-card>
+
+  @if (dataSource.length === 0) {
+    <div class="flex flex-center">
+      <h2>Nenhum perfil de usuário encontrado</h2>
+    </div>
+  }
+</div>
